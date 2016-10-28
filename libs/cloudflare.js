@@ -9,7 +9,10 @@
   var fn = Cloudflare.prototype;
 
   fn.fetch = function() {
-    this.api.logs(this.startTime(), function(json) {
+    this.api.logs({
+      count: 10000,
+      start: this.startTime()
+    }, function(json) {
        console.info(json);
     });
   };
