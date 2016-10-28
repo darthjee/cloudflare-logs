@@ -9,20 +9,16 @@
 
   var fn = CloudflareApi.prototype;
 
-  fn.logs = function(callback) {
+  fn.logs = function(startTime, callback) {
     http.get({
       hostname: 'api.cloudflare.com',
-      path: '/client/v4/zones/' + this.zoneId + '/logs/requests' + this._params(),
+      path: '/client/v4/zones/' + this.zoneId + '/logs/requests' + this._params(startTime),
       headers: this._headers()
     }, this._buildResponseParser(callback));
   };
 
-  fn._params = function() {
-    return '?count=10000&start=' + this.startTime();
-  };
-
-  fn.startTime = function() {
-    return Math.floor((new Date().getTime() / 1000) - 120)
+  fn._params = function(startTime) {
+    return '?count=10000&start=' + startTime;
   };
 
   fn._buildResponseParser = function(callback) {
