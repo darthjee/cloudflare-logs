@@ -12,8 +12,13 @@
     this.api.logs({
       count: 10000,
       start: this.startTime()
-    }, function(json) {
-       console.info(json);
+    }, {
+      process: function(json) {
+        console.info(json);
+      },
+      finish: function(count) {
+        console.info(count);
+      }
     });
   };
 
