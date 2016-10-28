@@ -1,5 +1,5 @@
 (function(module){
-  var http = require('http');
+  var http = require('https');
   var _ = require("underscore");
 
   function Cloudflare(zoneId, authEmail, authKey) {
@@ -15,8 +15,7 @@
       hostname: 'api.cloudflare.com',
       path: '/client/v4/zones/' + this.zoneId + '/logs/requests' + this._params(),
       headers: this._headers()
-    }, function(response){
-    });
+    }, this._readResponse);
   };
 
   fn._params = function() {
@@ -24,12 +23,22 @@
   };
 
   fn.startTime = function() {
-    return (new Date().getTime() / 1000) - 3600
+    return Math.floor((new Date().getTime() / 1000) - 120)
+  };
+
+  fn._readResponse = function(response) {
+    var body = '';
+    response.on('end', function() {
+      console.info(body);
+    });
+    response.on('data', function(chunk) {
+      body += chunk;
+    });
   };
 
   fn._headers = function() {
     var headers = {};
-    headers['Accept-Encoding'] = 'gzip';
+    //headers['Accept-Encoding'] = 'gzip';
     headers['X-Auth-Email'] = this.authEmail;
     headers['X-Auth-Key'] = this.authKey;
 
