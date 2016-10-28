@@ -1,5 +1,6 @@
 (function(module){
   var http = require('https');
+  var _ = require('underscore');
 
   function CloudflareApi(zoneId, authEmail, authKey) {
     this.zoneId = zoneId;
@@ -25,7 +26,14 @@
     return function(response) {
       var body = '';
       response.on('end', function() {
-        callback.call(this, JSON.parse(body));
+        lines = body.split('\n');
+        error = '';
+        list = _.each(lines, function(line) {
+          try {
+            callback.call(this, JSON.parse(line));
+          } catch(e) {
+          }
+        });
       });
       response.on('data', function(chunk) {
         body += chunk;
