@@ -19,7 +19,7 @@
   };
 
   fn._params = function() {
-    return '?count=100000&start=' + this.startTime();
+    return '?count=1&start=' + this.startTime();
   };
 
   fn.startTime = function() {
@@ -29,7 +29,7 @@
   fn._readResponse = function(response) {
     var body = '';
     response.on('end', function() {
-      console.info(body);
+      console.info(JSON.parse(body));
     });
     response.on('data', function(chunk) {
       body += chunk;
