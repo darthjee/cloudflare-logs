@@ -6,4 +6,4 @@ var Cloudflare = require('./libs/cloudflare');
 
 cloudflare = new Cloudflare(zoneId, authEmail, authKey);
 
-cloudflare.fetch();
+cloudflare.fetchAll();

@@ -1,6 +1,7 @@
 (function(module){
-  var http = require('https');
-  var _ = require('underscore');
+  var http = require('https'),
+      _ = require('underscore'),
+      querystring = require("querystring");
 
   function CloudflareApi(zoneId, authEmail, authKey) {
     this.zoneId = zoneId;
@@ -10,30 +11,34 @@
 
   var fn = CloudflareApi.prototype;
 
-  fn.logs = function(startTime, callback) {
+  fn.logs = function(params, callbacks) {
+    params = querystring.stringify(params)
     http.get({
       hostname: 'api.cloudflare.com',
-      path: '/client/v4/zones/' + this.zoneId + '/logs/requests' + this._params(startTime),
+      path: '/client/v4/zones/' + this.zoneId + '/logs/requests?' + params,
       headers: this._headers()
-    }, this._buildResponseParser(callback));
+    }, this._buildResponseParser(callbacks));
   };
 
-  fn._params = function(startTime) {
-    return '?count=10000&start=' + startTime;
-  };
+  fn._buildResponseParser = function(callbacks) {
+    var process = callbacks.process,
+        finish = callbacks.finish;
 
-  fn._buildResponseParser = function(callback) {
     return function(response) {
-      var body = '';
+      var body = '',
+          count = 0;
+
       response.on('end', function() {
         lines = body.split('\n');
         error = '';
-        list = _.each(lines, function(line) {
+        _.each(lines, function(line) {
           try {
-            callback.call(this, JSON.parse(line));
+            process.call(this, JSON.parse(line));
+            count++;
           } catch(e) {
           }
         });
+        finish.call(this, count);
       });
       response.on('data', function(chunk) {
         body += chunk;
