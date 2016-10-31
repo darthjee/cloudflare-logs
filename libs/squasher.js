@@ -22,19 +22,23 @@
     for (key in this.input) {
       var value = this.input[key],
           newKey = this.buildKey(key),
-          append;
-
-      if (value.constructor == {}.constructor) {
-        append = new Squasher(value, newKey).squash();
-      } else {
-        append = {};
-        append[newKey] = value
-      };
-
+          append = this.squashValue(newKey, value);
       _.extend(output, append);
     }
 
     return output;
+  };
+
+  fn.squashValue = function(key, value) {
+    var append = {}, that = this;
+
+    if (value.constructor == {}.constructor) {
+      append = new Squasher(value, key).squash();
+    } else {
+      append[key] = value
+    };
+
+    return append;
   };
 
   fn.buildKey = function(key) {
@@ -43,6 +47,7 @@
 
   module.exports = {
     squash: function(json) {
+      console.info(json);
       return new Squasher(json).squash();
     }
   };
