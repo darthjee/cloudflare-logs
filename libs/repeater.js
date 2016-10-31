@@ -7,17 +7,17 @@
     this.max = max;
     this.subject = subject;
 
-    _.bindAll(this, '_callback');
+    _.bindAll(this, 'callback');
   }
 
   var fn = Repeater.prototype;
 
   fn.call = function() {
     this.count++;
-    this.func.call(this.subject, this._callback);
+    this.func.call(this.subject, this.callback);
   };
 
-  fn._callback = function(repeat) {
+  fn.callback = function(repeat) {
     if(repeat && this.count < this.max) {
       this.call(); 
     }

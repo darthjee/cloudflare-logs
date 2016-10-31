@@ -7,8 +7,8 @@
     this.api = new CloudflareApi(zoneId, authEmail, authKey);
     this.loadSize = 100;
 
-    _.bindAll(this, '_repeaterCallback');
-    this.repeater = new Repeater(this._repeaterCallback, this, 5);
+    _.bindAll(this, 'fetch', '_finish');
+    this.repeater = new Repeater(this.fetch, this, 5);
   }
 
   var fn = Cloudflare.prototype;
@@ -17,7 +17,7 @@
     this.repeater.call();
   };
 
-  fn.fetch = function(callback) {
+  fn.fetch = function() {
     this.api.logs({
       count: this.loadSize,
       start: this.startTime()
@@ -27,20 +27,12 @@
     });
   };
 
-  fn._repeaterCallback = function(callback) {
-    var that = this;
-
-    this.fetch(function(count){
-      callback(count >= that.loadSize / 2)
-    });
-  };
-
   fn._process = function(json) {
   };
   
-  
-  fn.finish = function(count) {
-    callback.call(this, count);
+  fn._finish = function(count) {
+    console.info('count', count)
+    this.repeater.callback(count >= this.loadSize / 2)
   };
 
   fn.startTime = function() {
