@@ -1,0 +1,262 @@
+[
+  {
+    "name" : "timestamp",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "zoneId",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "zonePlan",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "ownerId",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "zoneName",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "hosterId",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "brandId",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "rayId",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "securityLevel",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "flags",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "client_ip",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "client_srcPort",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "client_ipClass",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "client_country",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "client_sslProtocol",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "client_sslCipher",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "client_sslFlags",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "client_deviceType",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "client_asNum",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "clientRequest_bytes",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "clientRequest_bodyBytes",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "clientRequest_httpHost",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "clientRequest_httpMethod",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "clientRequest_uri",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "clientRequest_httpProtocol",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "clientRequest_userAgent",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "clientRequest_flags",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "clientRequest_headers",
+    "type" : "STRING",
+    "mode": "repeated"
+  },
+  {
+    "name" : "clientRequest_cookies",
+    "type" : "STRING",
+    "mode": "repeated"
+  },
+  {
+    "name" : "clientRequest_body",
+    "type" : "STRING",
+    "mode": "repeated"
+  },
+  {
+    "name" : "clientRequest_accept",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edgeResponse_status",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edgeResponse_bytes",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edgeResponse_bodyBytes",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edgeResponse_compressionRatio",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edgeResponse_headers",
+    "type" : "STRING",
+    "mode": "repeated"
+  },
+  {
+    "name" : "edgeResponse_setCookies",
+    "type" : "STRING",
+    "mode": "repeated"
+  },
+  {
+    "name" : "edge_startTimestamp",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_endTimestamp",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_colo",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_flServerIp",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_flServerPort",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_flServerName",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_enabledFlags",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_usedFlags",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_pathingOp",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_pathingSrc",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_pathingStatus",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_bbResult",
+    "type" : "STRING",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_cacheResponseTime",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "edge_rateLimitRuleId",
+    "type" : "INTEGER",
+    "mode": "nullable"
+  },
+  {
+    "name" : "unstable",
+    "type" : "STRING",
+    "mode": "repeated"
+  }
+]
