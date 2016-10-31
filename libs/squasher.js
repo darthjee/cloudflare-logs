@@ -32,7 +32,9 @@
   fn.squashValue = function(key, value) {
     var append = {}, that = this;
 
-    if (value.constructor == {}.constructor) {
+    if (value == null) {
+      append[key] = value
+    } else if (value.constructor == {}.constructor) {
       append = new Squasher(value, key).squash();
     } else {
       append[key] = value
