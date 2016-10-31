@@ -47,7 +47,6 @@
 
   module.exports = {
     squash: function(json) {
-      console.info(json);
       return new Squasher(json).squash();
     }
   };

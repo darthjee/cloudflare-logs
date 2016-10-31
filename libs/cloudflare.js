@@ -1,6 +1,8 @@
 (function(module){
   var _ = require("underscore"),
       CloudflareApi = require('./cloudflare_api'),
+      Squasher = require('./squasher'),
+      Log = require('./models/log'),
       Repeater = require('./repeater');
  
   function Cloudflare(zoneId, authEmail, authKey) {
@@ -10,6 +12,7 @@
     _.bindAll(this, 'fetch', '_finish', '_process');
     this.repeater = new Repeater(this.fetch, this, 5);
     this.latest = this.startTime();
+    this.logs = [];
   }
 
   var fn = Cloudflare.prototype;
@@ -30,9 +33,12 @@
 
   fn._process = function(json) {
     this.latest = Math.ceil(json.timestamp / 1000000000);
+    this.logs.push(Squasher.squash(json));
   };
   
   fn._finish = function(count) {
+    Log.insertBatch(this.logs);
+    this.logs = [];
     this.repeater.callback(count >= this.loadSize - 1)
   };
 

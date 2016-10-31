@@ -13,8 +13,6 @@ const config = {
 
 BigQueryApi.default = new BigQueryApi(config).connect();
 
-BigQueryApi.default.dataset('cloudflare').table('logs')
+cloudflare = new Cloudflare(zoneId, authEmail, authKey);
 
-//cloudflare = new Cloudflare(zoneId, authEmail, authKey);
-
-//cloudflare.fetchAll();
+cloudflare.fetchAll();
