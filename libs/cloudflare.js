@@ -1,8 +1,8 @@
 (function(module){
   var _ = require("underscore"),
-     CloudflareApi = require('./cloudflare_api'),
-     Repeater = require('./repeater');
-
+      CloudflareApi = require('./cloudflare_api'),
+      Repeater = require('./repeater');
+ 
   function Cloudflare(zoneId, authEmail, authKey) {
     this.api = new CloudflareApi(zoneId, authEmail, authKey);
     this.loadSize = 10000;

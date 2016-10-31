@@ -2,8 +2,19 @@ var zoneId = process.env.ZONE_ID,
     authEmail = process.env.EMAIL,
     authKey = process.env.KEY;
 
-var Cloudflare = require('./libs/cloudflare');
+var Cloudflare = require('./libs/cloudflare'),
+    BigQueryApi = require('./libs/big_query/api');
 
-cloudflare = new Cloudflare(zoneId, authEmail, authKey);
+const projectData = require('./auth.json');
+const config = {
+  projectId: projectData['project_id'],
+  keyFilename: './auth.json'
+};
 
-cloudflare.fetchAll();
+BigQueryApi.default = new BigQueryApi(config).connect();
+
+BigQueryApi.default.dataset('cloudflare').table('logs')
+
+//cloudflare = new Cloudflare(zoneId, authEmail, authKey);
+
+//cloudflare.fetchAll();

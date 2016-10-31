@@ -18,8 +18,10 @@
   };
 
   fn.dataset = function(name) {
-    return new DataSet(this.conn, name);
+    return new Dataset(this.connection, name);
   };
+
+  Api.default = null;
 
   module.exports = Api;
 })(module);
