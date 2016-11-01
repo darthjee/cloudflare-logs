@@ -380,7 +380,7 @@
   "mode":"nullable"
 },{
   "name":"clientRequest_sslClientHello_cipherSuites",
-  "type":"STRING",
+  "type":"BYTES",
   "mode":"repeated"
 },{
   "name":"clientRequest_sslClientHello_compression",
