@@ -44,8 +44,8 @@
     var that = this;
 
     Log.insertBatch(this.logs);
+    this.latest = this.logs.pop().timestamp / 1000000000;
     this.logs = [];
-    this.latest = null;
 
     console.info('Loaded: %s', count);
     this.initStartTime(function() {
