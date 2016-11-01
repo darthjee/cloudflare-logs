@@ -1,15 +1,17 @@
 (function(module) {
-  var Cloudflare = require('./libs/cloudflare'),
-      BigQueryApi = require('./libs/big_query/api');
+  var Cloudflare = require('./libs/services/cloudflare'),
+      BigQueryApi = require('./libs/services/big_query/api');
 
   module.exports = {
     handler: function() {
-      const awsConfig = require('./aws.json');
-      const projectData = require('./auth.json');
-      const bigQueryConfig = {
-        projectId: projectData['project_id'],
-        keyFilename: './auth.json'
-      };
+      const awsFile = './config/aws.json',
+            projectFile = './config/auth.json',
+            awsConfig = require(awsFile),
+            projectData = require(projectFile),
+            bigQueryConfig = {
+              projectId: projectData['project_id'],
+              keyFilename: projectFile
+            };
 
       BigQueryApi.default = new BigQueryApi(bigQueryConfig).connect();
 

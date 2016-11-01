@@ -3,13 +3,13 @@
       _ = require('underscore'),
       querystring = require("querystring");
 
-  function CloudflareApi(zoneId, authEmail, authKey) {
+  function Api(zoneId, authEmail, authKey) {
     this.zoneId = zoneId;
     this.authEmail = authEmail;
     this.authKey = authKey;
   }
 
-  var fn = CloudflareApi.prototype;
+  var fn = Api.prototype;
 
   fn.logs = function(params, callbacks) {
     params = querystring.stringify(params);
@@ -55,6 +55,6 @@
     return headers;
   };
 
-  module.exports = CloudflareApi;
+  module.exports = Api;
 })(module);
 
