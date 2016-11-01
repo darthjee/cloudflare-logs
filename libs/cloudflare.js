@@ -1,7 +1,6 @@
 (function(module) {
   var _ = require("underscore"),
       CloudflareApi = require('./cloudflare_api'),
-      Squasher = require('./squasher'),
       Log = require('./models/log'),
       Repeater = require('./repeater');
  
@@ -36,7 +35,7 @@
 
   fn._process = function(json) {
     this.latest = Math.ceil(json.timestamp / 1000000000);
-    this.logs.push(Squasher.squash(json));
+    this.logs.push(new Log(json).enrich());
   };
   
   fn._finish = function(count) {

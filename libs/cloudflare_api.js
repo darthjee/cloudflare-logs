@@ -12,7 +12,7 @@
   var fn = CloudflareApi.prototype;
 
   fn.logs = function(params, callbacks) {
-    params = querystring.stringify(params)
+    params = querystring.stringify(params);
     http.get({
       hostname: 'api.cloudflare.com',
       path: '/client/v4/zones/' + this.zoneId + '/logs/requests?' + params,

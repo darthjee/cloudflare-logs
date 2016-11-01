@@ -1,8 +1,25 @@
 (function(module){
-  var BigQueryApi = require('../big_query/api');
+  var _ = require("underscore"),
+      BigQueryApi = require('../big_query/api'),
+      Squasher = require('../squasher'),
+      querystring = require("querystring");
 
-  function Log() {
+  function Log(json) {
+    this.json = Squasher.squash(json)
   }
+
+  var fn = Log.prototype;
+
+  fn.enrich = function() {
+    this.json.clientRequest_sslClientHello_extensions = this.parametrize(this.json.clientRequest_sslClientHello_extensions);
+    return this.json;
+  };
+
+  fn.parametrize = function(array) {
+    _.map(array, function(element){
+      return querystring.stringify(element);
+    });
+  };
 
   Log.insertBatch = function(rows) {
     this.getTable().insert(rows);
