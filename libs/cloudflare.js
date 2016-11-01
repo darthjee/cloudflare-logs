@@ -42,7 +42,7 @@
     Log.insertBatch(this.logs);
     this.logs = [];
     this.latest = null;
-    this.repeater.callback(count >= this.loadSize - 1)
+    this.repeater.callback(count >= (this.loadSize / 2.0))
   };
 
   fn.initStartTime = function(callback) {
