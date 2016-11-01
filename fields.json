@@ -136,7 +136,7 @@
   "mode":"nullable"
 },{
   "name":"edgeResponse_compressionRatio",
-  "type":"INTEGER",
+  "type":"FLOAT",
   "mode":"nullable"
 },{
   "name":"edgeResponse_headers",
