@@ -18,4 +18,4 @@
       cloudflare.fetchAll();
     }
   };
-});
+})(module);
