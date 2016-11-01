@@ -21,6 +21,18 @@
     console.log('Response of insert into %s, %s', this.name, JSON.stringify(apiResponse, null, 2));
   };
 
+  fn.select = function(select, callback) {
+    query =  'SELECT ' + select + ' FROM ' + this.name;
+
+    this.table.query({
+      query: query
+    }, function(err, response) {
+      if (err) {
+        return console.log('Error while running: "%s" %s', query, err);
+      }
+      callback(response);
+    });
+  };
 
   module.exports = Table;
 })(module);
