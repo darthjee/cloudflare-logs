@@ -57,7 +57,7 @@
     var that = this;
 
     Log.lastTimestamp(function(timestamp){
-      timestamp = timestamp || that.startTime();
+      timestamp = timestamp || that.startTime() * 1000000000;
       that.latest = Math.ceil(timestamp / 1000000000);
       console.info('Latest %s', new Date(that.latest * 1000));
       callback();
