@@ -1,7 +1,7 @@
 (function(module){
   var _ = require("underscore"),
       BigQueryApi = require('../big_query/api'),
-      Squasher = require('../squasher'),
+      Squasher = require('../utils/squasher'),
       querystring = require("querystring");
 
   function Log(json) {

@@ -2,7 +2,7 @@
   var _ = require("underscore"),
       CloudflareApi = require('./cloudflare_api'),
       Log = require('./models/log'),
-      Repeater = require('./repeater');
+      Repeater = require('./utils/repeater');
  
   function Cloudflare(config) {
     this.api = new CloudflareApi(config.zoneId, config.authEmail, config.authKey);
