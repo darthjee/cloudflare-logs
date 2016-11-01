@@ -55,7 +55,7 @@
   };
 
   fn.startTime = function() {
-    return Math.floor((new Date().getTime() / 1000) - 3600)
+    return Math.floor((new Date().getTime() / 1000) - 3600 * 5)
   };
 
   module.exports = Cloudflare;
