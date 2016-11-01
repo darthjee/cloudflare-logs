@@ -9,7 +9,7 @@
     this.loadSize = 100;
 
     _.bindAll(this, 'fetch', '_finish', '_process', 'initStartTime');
-    this.repeater = new Repeater(this.fetch, this, 10000);
+    this.repeater = new Repeater(this.fetch, this, 1000);
     this.logs = [];
   }
 
