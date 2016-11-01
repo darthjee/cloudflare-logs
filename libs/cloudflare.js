@@ -1,5 +1,4 @@
 (function(module) {
-  var debug = true;
   var _ = require("underscore"),
       CloudflareApi = require('./cloudflare_api'),
       Squasher = require('./squasher'),
@@ -8,7 +7,7 @@
  
   function Cloudflare(zoneId, authEmail, authKey) {
     this.api = new CloudflareApi(zoneId, authEmail, authKey);
-    this.loadSize = 100;
+    this.loadSize = 1;
 
     _.bindAll(this, 'fetch', '_finish', '_process');
     this.repeater = new Repeater(this.fetch, this, 5);
@@ -34,10 +33,6 @@
 
   fn._process = function(json) {
     this.latest = Math.ceil(json.timestamp / 1000000000);
-    if (debug) {
-      console.info(Squasher.squash(json));
-      debug = !debug;
-    }
     this.logs.push(Squasher.squash(json));
   };
   

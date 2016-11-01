@@ -16,9 +16,9 @@
   
   fn._insertionError = function (err, insertErrors, apiResponse) {
     if (err) {
-      return console.log('Error while inserting data: %s', err);
+//      return console.log('Error while inserting data: %s', err);
     }
-    console.log('Response of insert into %s, %s', this.name, JSON.stringify(apiResponse, null, 2));
+//    console.log('Response of insert into %s, %s', this.name, JSON.stringify(apiResponse, null, 2));
   };
 
 
