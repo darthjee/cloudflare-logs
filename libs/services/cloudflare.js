@@ -6,10 +6,10 @@
  
   function Cloudflare(config) {
     this.api = new CloudflareApi(config.zoneId, config.authEmail, config.authKey);
-    this.loadSize = 100;
+    this.loadSize = 1000;
 
     _.bindAll(this, 'fetch', '_finish', '_process', 'initStartTime');
-    this.repeater = new Repeater(this.fetch, this, 1000);
+    this.repeater = new Repeater(this.fetch, this, 100);
     this.logs = [];
   }
 
@@ -24,13 +24,15 @@
   };
 
   fn.fetch = function() {
-    this.api.logs({
-      count: this.loadSize,
-      start: this.latest
-    }, {
-      process: this._process,
-      finish: this._finish
-    });
+    if (this.latest) {
+      this.api.logs({
+        count: this.loadSize,
+        start: this.latest
+      }, {
+        process: this._process,
+        finish: this._finish
+      });
+    }
   };
 
   fn._process = function(json) {
