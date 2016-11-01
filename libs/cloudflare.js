@@ -1,6 +1,6 @@
 (function(module) {
   var _ = require("underscore"),
-      CloudflareApi = require('./cloudflare_api'),
+      CloudflareApi = require('./cloudflare/api'),
       Log = require('./models/log'),
       Repeater = require('./utils/repeater');
  
