@@ -39,11 +39,16 @@
   };
   
   fn._finish = function(count) {
+    var that = this;
+
     Log.insertBatch(this.logs);
     this.logs = [];
     this.latest = null;
+
     console.info('Loaded: %s', count);
-    this.repeater.callback(count >= (this.loadSize / 2.0))
+    this.initStartTime(function() {
+      that.repeater.callback(count >= (that.loadSize / 2.0))
+    });
   };
 
   fn.initStartTime = function(callback) {
