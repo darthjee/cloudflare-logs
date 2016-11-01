@@ -136,7 +136,7 @@
   "mode":"nullable"
 },{
   "name":"edgeResponse_compressionRatio",
-  "type":"INTEGER",
+  "type":"FLOAT",
   "mode":"nullable"
 },{
   "name":"edgeResponse_headers",
@@ -380,11 +380,11 @@
   "mode":"nullable"
 },{
   "name":"clientRequest_sslClientHello_cipherSuites",
-  "type":"BYTES",
+  "type":"INTEGER",
   "mode":"repeated"
 },{
   "name":"clientRequest_sslClientHello_compression",
-  "type":"STRING",
+  "type":"INTEGER",
   "mode":"repeated"
 },{
   "name":"clientRequest_sslClientHello_extensions",

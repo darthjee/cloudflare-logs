@@ -1,24 +1,26 @@
 (function(module) {
   var _ = require("underscore"),
       CloudflareApi = require('./cloudflare_api'),
-      Squasher = require('./squasher'),
       Log = require('./models/log'),
       Repeater = require('./repeater');
  
   function Cloudflare(zoneId, authEmail, authKey) {
     this.api = new CloudflareApi(zoneId, authEmail, authKey);
-    this.loadSize = 1;
+    this.loadSize = 500;
 
     _.bindAll(this, 'fetch', '_finish', '_process');
-    this.repeater = new Repeater(this.fetch, this, 5);
-    this.latest = this.startTime();
+    this.repeater = new Repeater(this.fetch, this, 50);
     this.logs = [];
   }
 
   var fn = Cloudflare.prototype;
 
   fn.fetchAll = function() {
-    this.repeater.call();
+    if (this.latest) {
+      this.repeater.call();
+    } else {
+      this.initStartTime(this.repeater.call);
+    }
   };
 
   fn.fetch = function() {
@@ -33,13 +35,23 @@
 
   fn._process = function(json) {
     this.latest = Math.ceil(json.timestamp / 1000000000);
-    this.logs.push(Squasher.squash(json));
+    this.logs.push(new Log(json).enrich());
   };
   
   fn._finish = function(count) {
     Log.insertBatch(this.logs);
     this.logs = [];
     this.repeater.callback(count >= this.loadSize - 1)
+  };
+
+  fn.initStartTime = function(callback) {
+    var that = this;
+
+    Log.lastTimestamp(function(timestamp){
+      timestamp = timestamp || that.startTime();
+      that.latest = Math.ceil(timestamp / 1000000000);
+      callback();
+    });
   };
 
   fn.startTime = function() {
