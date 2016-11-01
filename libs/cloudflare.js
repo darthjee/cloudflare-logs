@@ -4,8 +4,8 @@
       Log = require('./models/log'),
       Repeater = require('./repeater');
  
-  function Cloudflare(zoneId, authEmail, authKey) {
-    this.api = new CloudflareApi(zoneId, authEmail, authKey);
+  function Cloudflare(config) {
+    this.api = new CloudflareApi(config.zoneId, config.authEmail, config.authKey);
     this.loadSize = 500;
 
     _.bindAll(this, 'fetch', '_finish', '_process');
