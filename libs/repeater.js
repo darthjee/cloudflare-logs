@@ -7,7 +7,7 @@
     this.max = max;
     this.subject = subject;
 
-    _.bindAll(this, 'callback');
+    _.bindAll(this, 'callback', 'call');
   }
 
   var fn = Repeater.prototype;

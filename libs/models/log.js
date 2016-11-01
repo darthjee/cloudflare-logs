@@ -16,9 +16,13 @@
     }
   }
 
-  Log.lastTimestamp = function() {
+  Log.lastTimestamp = function(callback) {
     this.getTable().select('max(timestamp) as timestamp', function(response) {
-      console.info(response[0].timestamp);
+      var timestamp = null;
+      if (response[0]) {
+        timestamp = response[0].timestamp;
+      }
+      callback(timestamp);
     });
   };
 
