@@ -380,11 +380,11 @@
   "mode":"nullable"
 },{
   "name":"clientRequest_sslClientHello_cipherSuites",
-  "type":"BYTES",
+  "type":"INTEGER",
   "mode":"repeated"
 },{
   "name":"clientRequest_sslClientHello_compression",
-  "type":"STRING",
+  "type":"INTEGER",
   "mode":"repeated"
 },{
   "name":"clientRequest_sslClientHello_extensions",
