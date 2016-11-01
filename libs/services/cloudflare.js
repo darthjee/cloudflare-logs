@@ -59,7 +59,7 @@
     Log.lastTimestamp(function(timestamp){
       timestamp = timestamp || that.startTime();
       that.latest = Math.ceil(timestamp / 1000000000);
-      console.info(new Date(that.latest * 1000));
+      console.info('Latest %s', new Date(that.latest * 1000));
       callback();
     });
   };
