@@ -8,8 +8,8 @@
     this.api = new CloudflareApi(config.zoneId, config.authEmail, config.authKey);
     this.loadSize = 100;
 
-    _.bindAll(this, 'fetch', '_finish', '_process');
-    this.repeater = new Repeater(this.fetch, this, 100);
+    _.bindAll(this, 'fetch', '_finish', '_process', 'initStartTime');
+    this.repeater = new Repeater(this.fetch, this, 10000);
     this.logs = [];
   }
 
@@ -42,6 +42,7 @@
     Log.insertBatch(this.logs);
     this.logs = [];
     this.latest = null;
+    console.info('Loaded: %s', count);
     this.repeater.callback(count >= (this.loadSize / 2.0))
   };
 
@@ -57,7 +58,7 @@
   };
 
   fn.startTime = function() {
-    return Math.floor((new Date().getTime() / 1000) - 3600 * 5)
+    return Math.floor((new Date().getTime() / 1000) - 3600 * 24 * 2)
   };
 
   module.exports = Cloudflare;
