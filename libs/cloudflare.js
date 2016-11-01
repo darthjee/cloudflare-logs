@@ -34,13 +34,13 @@
   };
 
   fn._process = function(json) {
-    this.latest = Math.ceil(json.timestamp / 1000000000);
     this.logs.push(new Log(json).enrich());
   };
   
   fn._finish = function(count) {
     Log.insertBatch(this.logs);
     this.logs = [];
+    this.latest = null;
     this.repeater.callback(count >= this.loadSize - 1)
   };
 
