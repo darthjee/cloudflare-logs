@@ -1,6 +1,6 @@
 (function(module) {
-  var Cloudflare = require('./libs/cloudflare'),
-      BigQueryApi = require('./libs/big_query/api');
+  var Cloudflare = require('./libs/services/cloudflare'),
+      BigQueryApi = require('./libs/services/big_query/api');
 
   module.exports = {
     handler: function() {
