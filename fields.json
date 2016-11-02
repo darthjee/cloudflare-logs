@@ -430,4 +430,8 @@
   "name":"edge_waf_timestampStart",
   "type":"INTEGER",
   "mode":"nullable"
+},{
+  "name":"edge_waf_timestampEnd",
+  "type":"INTEGER",
+  "mode":"nullable"
 }]
