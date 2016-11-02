@@ -426,4 +426,8 @@
   "name":"backend_originTimeoutCount",
   "type":"INTEGER",
   "mode":"nullable"
+},{
+  "name":"edge_waf_timestampStart",
+  "type":"INTEGER",
+  "mode":"nullable"
 }]
