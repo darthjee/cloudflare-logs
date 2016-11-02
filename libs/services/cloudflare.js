@@ -6,7 +6,7 @@
  
   function Cloudflare(config) {
     this.api = new CloudflareApi(config.zoneId, config.authEmail, config.authKey);
-    this.loadSize = 100;
+    this.loadSize = 2000;
 
     _.bindAll(this, 'fetch', '_finish', '_process', 'initStartTime');
     this.repeater = new Repeater(this.fetch, this, 1);
