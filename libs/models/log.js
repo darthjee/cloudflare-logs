@@ -14,6 +14,7 @@
     this.json.clientRequest_sslClientHello_extensions = this.parametrize(this.json.clientRequest_sslClientHello_extensions);
     this.json.clientRequest_headers = this.parametrize(this.json.clientRequest_headers);
     this.json.edgeRequest_headers = this.parametrize(this.json.edgeRequest_headers);
+    this.json.cacheRequest_headers = this.parametrize(this.json.cacheRequest_headers);
     return this.json;
   };
 
