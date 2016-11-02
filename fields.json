@@ -434,4 +434,60 @@
   "name":"edge_waf_timestampEnd",
   "type":"INTEGER",
   "mode":"nullable"
+},{
+  "name":"edge_waf_profile",
+  "type":"STRING",
+  "mode":"nullable"
+},{
+  "name":"edge_waf_ruleId",
+  "type":"STRING",
+  "mode":"nullable"
+},{
+  "name":"edge_waf_ruleMessage",
+  "type":"STRING",
+  "mode":"nullable"
+},{
+  "name":"edge_waf_action",
+  "type":"STRING",
+  "mode":"nullable"
+},{
+  "name":"edge_waf_ruleDetail",
+  "type":"STRING",
+  "mode":"repeated"
+},{
+  "name":"edge_waf_matchedVar",
+  "type":"STRING",
+  "mode":"nullable"
+},{
+  "name":"edge_waf_activatedRules",
+  "type":"STRING",
+  "mode":"repeated"
+},{
+  "name":"edge_waf_ruleGroup",
+  "type":"STRING",
+  "mode":"nullable"
+},{
+  "name":"edge_waf_exitCode",
+  "type":"INTEGER",
+  "mode":"nullable"
+},{
+  "name":"edge_waf_xssScore",
+  "type":"FLOAT",
+  "mode":"nullable"
+},{
+  "name":"edge_waf_sqlInjectionScore",
+  "type":"FLOAT",
+  "mode":"nullable"
+},{
+  "name":"edge_waf_anomalyScore",
+  "type":"FLOAT",
+  "mode":"nullable"
+},{
+  "name":"edge_waf_tags",
+  "type":"STRING",
+  "mode":"repeated"
+},{
+  "name":"edge_waf_flags",
+  "type":"INTEGER",
+  "mode":"nullable"
 }]
