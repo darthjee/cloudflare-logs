@@ -12,6 +12,10 @@
 
   fn.enrich = function() {
     this.json.clientRequest_sslClientHello_extensions = this.parametrize(this.json.clientRequest_sslClientHello_extensions);
+    this.json.clientRequest_headers = this.parametrize(this.json.clientRequest_headers);
+    this.json.edgeRequest_headers = this.parametrize(this.json.edgeRequest_headers);
+    this.json.cacheRequest_headers = this.parametrize(this.json.cacheRequest_headers);
+    this.json.edge_waf_activatedRules = this.parametrize(this.json.edge_waf_activatedRules);
     return this.json;
   };
 
